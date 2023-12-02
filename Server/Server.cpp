@@ -184,9 +184,6 @@ void Server::OnConnectionStatusChanged(SteamNetConnectionStatusChangedCallback_t
 		if ((bool)m_ClientConnectedCallback)
 			m_ClientConnectedCallback(NewClient);
 
-		std::string s = "Hello!123";
-		SendBufferToClient(NewClient, Buffer(s.data(), s.size()));
-
 		break;
 	}
 
