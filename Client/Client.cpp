@@ -175,8 +175,6 @@ void Client::PollIncomingMessages() {
 			return;
 		}
 
-		std::cout << "Get Message" << std::endl;
-
 		if ((bool)m_DataReceivedCallback)
 			m_DataReceivedCallback(Buffer(pIncomingMessage->m_pData, pIncomingMessage->m_cbSize));
 
@@ -191,18 +189,4 @@ void Client::PollConnectionStateChanges() {
 void Client::FatalError(const std::string& message) {
 	std::cout << message << std::endl;
 	m_Running = false;
-}
-
-void foo(const Buffer& buffer) {
-	std::cout << "Data received" << std::endl;
-	//int* sp = static_cast<int*>(buffer.Data);
-	std::cout << "Message: " << std::string((const char*)buffer.Data, buffer.DataSize) << std::endl;
-}
-
-int main() {
-	Client client;
-	client.SetDataReceivedCallback(foo);
-	client.ConnectToServer("127.0.0.1:27020");
-
-	return 0;
 }

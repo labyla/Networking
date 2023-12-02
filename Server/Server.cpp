@@ -235,11 +235,3 @@ void Server::FatalError(const std::string& message) {
 	std::cout << message << std::endl;
 	m_Running = false;
 }
-
-
-int main() {
-	Server server;
-	server.Start();
-
-	return 0;
-}

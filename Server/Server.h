@@ -14,15 +14,12 @@
 #include "buffer/Buffer.h"
 
 class Server {
-private:
-	using Connection = HSteamNetConnection;
-
+public:
 	struct ClientInfo {
 		HSteamNetConnection Connection;
 		std::string ConnectionDescription;
 	};
 
-public:
 	using DataReceivedCallback = std::function<void(const ClientInfo&, const Buffer&)>;
 	using ClientConnectedCallback = std::function<void(const ClientInfo&)>;
 	using ClientDisconnectedCallback = std::function<void(const ClientInfo&)>;
@@ -55,9 +52,9 @@ public:
 		SendBufferToAllClients(Buffer(Data, sizeof(T)), ExcludeClient, reliable);
 	}
 
-	void SetDataReceivedCallback(DataReceivedCallback& NewCallbackFunction);
-	void SetClientConnectedCallback(ClientConnectedCallback& NewCallbackFunction);
-	void SetClientDisconnectedCallback(ClientDisconnectedCallback& NewCallbackFunction);
+	void SetDataReceivedCallback(const DataReceivedCallback& NewCallbackFunction);
+	void SetClientConnectedCallback(const ClientConnectedCallback& NewCallbackFunction);
+	void SetClientDisconnectedCallback(const ClientDisconnectedCallback& NewCallbackFunction);
 
 	std::map<HSteamNetConnection, ClientInfo> GetConnectedClients();
 
