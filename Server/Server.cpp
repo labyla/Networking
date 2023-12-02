@@ -51,9 +51,9 @@ void Server::SendBufferToAllClients(const Buffer& buffer, const ClientInfo& Excl
 	}
 }
 
-void Server::SetDataReceivedCallback(DataReceivedCallback& NewCallbackFunction) { m_DataReceivedCallback = NewCallbackFunction; }
-void Server::SetClientConnectedCallback(ClientConnectedCallback& NewCallbackFunction) { m_ClientConnectedCallback = NewCallbackFunction; } 
-void Server::SetClientDisconnectedCallback(ClientDisconnectedCallback& NewCallbackFunction) { m_ClientDisconnectedCallback = NewCallbackFunction; }
+void Server::SetDataReceivedCallback(const DataReceivedCallback& NewCallbackFunction) { m_DataReceivedCallback = NewCallbackFunction; }
+void Server::SetClientConnectedCallback(const ClientConnectedCallback& NewCallbackFunction) { m_ClientConnectedCallback = NewCallbackFunction; } 
+void Server::SetClientDisconnectedCallback(const ClientDisconnectedCallback& NewCallbackFunction) { m_ClientDisconnectedCallback = NewCallbackFunction; }
 
 std::map<HSteamNetConnection, Server::ClientInfo> Server::GetConnectedClients() {
 	return Server::m_ConnectedClients;
